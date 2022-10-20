@@ -17,11 +17,13 @@ app.use('/clubs', clubRoutes)
 const CONNECTION_URL =
 	'mongodb+srv://boburkomilob:9bOUrZSnvxBr54JY@cluster0.v5eor.mongodb.net/?retryWrites=true&w=majority';
 
+const LOCAL_URL = 'mongodb://localhost:27017'
+
 const PORT = process.env.PORT || 5000;
 
 mongoose
-	.connect(CONNECTION_URL)
+	.connect(LOCAL_URL)
 	.then(() =>
-		app.listen(PORT, () => console.log(`Server running on pror: ${PORT}`))
+		app.listen(PORT, () => console.log(`Server running on port: ${PORT}`))
 	)
 	.catch((error) => console.log(error.message));

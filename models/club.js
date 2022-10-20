@@ -11,13 +11,24 @@ const clubSchema = mongoose.Schema({
 				title: String,
 				content: String,
 				postId: String,
-				comments: [
-					{
-						author: String,
-						text: String,
-					},
-				],
-			},
+				description: String,
+				comments: {
+					type: [
+						{
+							id: String,
+							author: String,
+							text: String,
+							likes: {type: [String], default: []},
+							commentId: String
+						}
+					],
+					default: []
+				},
+				createdAt: {
+					type: Date,
+					default: new Date(),
+				},
+			}
 		],
 		default: [],
 	},
